@@ -41,6 +41,7 @@ export default new Vuex.Store({
         .post(api_uri, payload)
         .then(() => commit("addForm", { payload }))
         .catch(err => alert(err));
+      this.fetchForm();
     },
     async deleteForm({ commit }, payload) {
       await axios

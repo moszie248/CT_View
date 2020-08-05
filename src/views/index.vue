@@ -123,9 +123,9 @@ export default {
   created() {
     this.fetchForm();
   },
-  updated() {
-    this.fetchForm();
-  },
+  // updated() {
+  //   this.fetchForm();
+  // },
   methods: {
     fetchForm() {
       this.$store.dispatch("fetchForm");
@@ -137,13 +137,14 @@ export default {
         age: this.form.age,
         aka: this.form.aka
       };
-      this.$store.dispatch("addForm", payload);
+      this.$store.dispatch("addForm", payload).then(location.reload());
+      // location.reload();
     },
     deleteForm(id) {
       let payload = {
         _id: id
       };
-      this.$store.dispatch("deleteForm", payload);
+      this.$store.dispatch("deleteForm", payload).then(location.reload());
     },
     openEdit(index, item) {
       this.editindex = index;
@@ -165,6 +166,7 @@ export default {
         aka: this.form.aka
       };
       this.$store.dispatch("editForm", payload).then(this.closeEdit());
+      location.reload();
     }
   }
 };
